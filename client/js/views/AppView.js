@@ -14,7 +14,7 @@ var AppView = Backbone.View.extend({
   showCohort: function(number) {
     var cohort = new Cohort({ cohort: number});
     debugger;
-
+    // in the line below, you don't need to return either.
     return this.$el.find('#page-content-container')
       .html(new StudentsView({ collection: cohort}).render())
   },
