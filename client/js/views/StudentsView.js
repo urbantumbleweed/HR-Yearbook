@@ -17,6 +17,8 @@ var StudentsView = Backbone.View.extend({
 
     debugger;
     return this.$el.html(children);
+    // in the line above, you don't need to call html(children)
+    // just return this.$el.html();
   }
 
 });
