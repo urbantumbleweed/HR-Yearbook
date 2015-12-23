@@ -6,9 +6,9 @@ var StudentEntryView = Backbone.View.extend({
     className: 'student'
   },
 
-  template: _.template('<img src"<%= image %>" />' +
-    '<h2 class="student-name"><%= name %></h2>' +
-    '<p class="student-cohort" ><%= cohort %></p>'),
+  template: _.template('<img src="<%- image %>" />' +
+    '<h2 class="student-name"><%- name %></h2>' +
+    '<p class="student-cohort" ><%- cohort %></p>'),
 
   events: {
     'mouseover': 'handleMouseOver',
@@ -18,7 +18,7 @@ var StudentEntryView = Backbone.View.extend({
   initialize: function(params){
     this.attributes['data-id'] = params.id;
     this.listenTo(this.model, 'change', this.render);
-    this.render();
+    return this.render();
   },
 
   render: function(){

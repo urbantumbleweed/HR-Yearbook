@@ -13,10 +13,13 @@ var AppView = Backbone.View.extend({
 
   showCohort: function(number) {
     var cohort = new Cohort({ cohort: number});
-    debugger;
+    this.clearContentContainer();
 
     return this.$el.find('#page-content-container')
-      .html(new StudentsView({ collection: cohort}).render())
+      .append(new StudentsView({
+        collection: cohort,
+        el: '#page-content-container'
+      }))
   },
 
   showLanding: function() {
@@ -34,7 +37,7 @@ var AppView = Backbone.View.extend({
   },
 
   clearContentContainer: function(){
-    $('#page-content-container').hmtl('');
+    $('#page-content-container').html('');
   }
 
 
