@@ -1,4 +1,4 @@
-var students = new Students();
+// var students = new Students();
 // var app = new AppModel();
 // var cohort = new Backbone.Model.extend({
 //   model: Student,
@@ -14,12 +14,9 @@ var appview = new AppView({
   navbar: new NavBarView({
     el: '#navbar-container'
   }),
-  infoPane: new InfoWindowView({
-    el: "#info-window-container",
-
-  }),
-  students: new StudentsView({ collection: students})
+  infoPane: new InfoWindowView(),
+  students: new Students()
 });
 
 // http://backbonejs.org/#History
-Backbone.history.start({ pushState: true });
+Backbone.history.start();

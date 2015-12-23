@@ -2,23 +2,24 @@ var StudentEntryView = Backbone.View.extend({
 
   tagName: 'div',
 
-  attributes: {
-    className: 'student'
-  },
+  className: 'student',
 
-  template: _.template('<img src="<%- image %>" />' +
+  template: _.template('<div class="student-image" style="background-image: url(<%- image %>)"></div>' +
     '<h2 class="student-name"><%- name %></h2>' +
-    '<p class="student-cohort" ><%- cohort %></p>'),
+    '<p class="student-nickname"><%=nickname %></p>' +
+    '<p class="student-cohort" >Cohort: <span class="student-cohort__number"><%- cohort %></span></p>'),
 
   events: {
-    'mouseover': 'handleMouseOver',
     'click': 'handleClick'
   },
 
   initialize: function(params){
-    this.attributes['data-id'] = params.id;
-    this.listenTo(this.model, 'change', this.render);
-    return this.render();
+    this.listenTo(this.model, 'sync', this.render);
+  },
+
+  handleClick: function(e){
+    e.preventDefault();
+    this.model.highlight(e);
   },
 
   render: function(){

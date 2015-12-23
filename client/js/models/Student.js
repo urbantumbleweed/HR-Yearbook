@@ -11,9 +11,14 @@ var Student = Backbone.Model.extend({
   },
 
   initialize: function(params){
-    // var fullName = params.name.split(' ');
-    // this.set('first', fullName[0].trim());
-    // this.set('last', fullName[1].trim());
+    var fullName = params.name.split(' ');
+    this.set('first', fullName[0].trim());
+    this.set('last', fullName[1].trim());
+    this.set('nickname', generateNickname());
+  },
+
+  highlight: function(e){
+    this.trigger('highlight', this);
   }
 
 });

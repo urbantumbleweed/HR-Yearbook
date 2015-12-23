@@ -3,49 +3,41 @@ var AppRouter = Backbone.Router.extend({
 
   routes: {
     '': 'landing',
-    'students': 'allStudents',
+    'students?id=:id': 'studentById',
+    'students?name=:nameString': 'studentByName',
+    'students?image=:imageUrl': 'studentByImage',
+    'students?cohort=:number': 'showCohort',
     'students/:id': 'studentById',
-    'students/id=:id': 'studentById',
-    'students/name=:nameString': 'studentByName',
-    'students/image=:imageUrl': 'studentByImage',
-    'students/cohort=:number': 'showCohort',
+    'students': 'allStudents',
     'cohort/:number': 'showCohort'
   },
 
+  triggerOption: {
+    trigger: true
+  },
+
   landing: function() {
-    debugger;
-    this.trigger('landing');
     this.navigate('');
   },
 
   allStudents: function(){
-    debugger;
-    this.trigger('allStudents');
-    this.navigate('students/');
+    this.navigate('students/', this.triggerOption);
   },
 
   studentById: function(id){
-    debugger;
-    this.trigger('studentById', decodeURIComponent(id));
-    this.navigate('students/' + encodeURIComponent(id));
+    this.navigate('students/' + encodeURIComponent(id), this.triggerOption);
   },
 
   studentByName: function(nameString){
-    debugger;
-    this.trigger('studentByName', decodeURIComponent(nameString));
-    this.navigate('students/name=' + encodeURIComponent(nameString));
+    this.navigate('students/name=' + encodeURIComponent(nameString), this.triggerOption);
   },
 
   studentByImage: function(imageUrl){
-    debugger;
-    this.trigger('studentByImage', decodeURIComponent(imageUrl));
-    this.navigate('students/image=' + encodeURIComponent(imageUrl));
+    this.navigate('students/image=' + encodeURIComponent(imageUrl), this.triggerOption);
   },
 
   showCohort: function(params){
-    debugger;
-    this.trigger('showCohort', decodeURIComponent(params));
-    this.navigate('cohort/' + encodeURIComponent(params));
+    this.navigate('cohort/' + encodeURIComponent(params), this.triggerOption);
   }
 
 });
