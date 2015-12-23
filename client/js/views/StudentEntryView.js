@@ -19,6 +19,8 @@ var StudentEntryView = Backbone.View.extend({
     this.attributes['data-id'] = params.id;
     this.listenTo(this.model, 'change', this.render);
     this.render();
+    // initializing doesn't return anything, so:
+    return this.render();
   },
 
   render: function(){
