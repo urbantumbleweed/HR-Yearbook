@@ -13,6 +13,7 @@ var StudentsView = Backbone.View.extend({
   render: function() {
     var children = this.collection.map(function(student){
       return new StudentEntryView({ model: student });
+      // new StudentEntryView doesn't return anything. You need to update the studentEntryView
     });
 
     debugger;
