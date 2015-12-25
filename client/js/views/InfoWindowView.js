@@ -4,19 +4,17 @@ var InfoWindowView = Backbone.View.extend({
 
   model: Student,
 
-  template: _.template('<h1><%- nickname %></h1>'),
+  template: _.template('<h1><%- first %> the "<%- nickname %>" <%- last %></h1>'),
 
   initialize: function() {
     this.render();
   },
 
   render: function() {
-    this.$el.html('');
-  },
-
-  highlight: function(student){
-    console.log('got click event', student);
-    this.$el.html(this.template(student.attributes));
+    this.$el.html(this.template(this.model.attributes));
+    setTimeout(function(){
+      this.$el.html('');
+    }.bind(this), 2000);
   }
 
 });

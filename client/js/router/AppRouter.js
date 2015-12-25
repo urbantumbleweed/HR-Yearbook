@@ -37,6 +37,7 @@ var AppRouter = Backbone.Router.extend({
   },
 
   showCohort: function(params){
+    debugger;
     this.navigate('cohort/' + encodeURIComponent(params), this.triggerOption);
   }
 

@@ -14,7 +14,6 @@ var StudentsView = Backbone.View.extend({
     var children = this.collection.map(function(student){
       return new StudentEntryView({ model: student }).render();
     });
-
     return this.$el.html('').append(children);
   }
 

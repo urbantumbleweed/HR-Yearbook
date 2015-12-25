@@ -10,7 +10,9 @@ var StudentEntryView = Backbone.View.extend({
     '<p class="student-cohort" >Cohort: <span class="student-cohort__number"><%- cohort %></span></p>'),
 
   events: {
-    'click': 'handleClick'
+    'click': 'handleClick',
+    'mouseenter': 'handleMouseEnter',
+    'mouseleave': 'handleMouseLeave'
   },
 
   initialize: function(params){
@@ -20,6 +22,18 @@ var StudentEntryView = Backbone.View.extend({
   handleClick: function(e){
     e.preventDefault();
     this.model.highlight(e);
+  },
+
+  handleMouseEnter: function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    this.$el.find('p.student-nickname').css('visibility', 'visible');
+  },
+
+  handleMouseLeave: function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    this.$el.find('p.student-nickname').css('visibility', 'collapse');
   },
 
   render: function(){

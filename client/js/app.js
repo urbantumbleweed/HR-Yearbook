@@ -1,21 +1,12 @@
-// var students = new Students();
-// var app = new AppModel();
-// var cohort = new Backbone.Model.extend({
-//   model: Student,
-
-//   initialize: function(){
-//     this.url = 'https://hr-yearbook.herokuapp.com/api/students?cohort=' + options.cohort;
-//   }
-// });
+var students = new Students();
+var app = new AppModel({
+  currentStudents: students
+});
 
 var appview = new AppView({
-  // model: app,
   router: new AppRouter(),
-  navbar: new NavBarView({
-    el: '#navbar-container'
-  }),
-  infoPane: new InfoWindowView(),
-  students: new Students()
+  navbar: new NavBarView(),
+  model: app
 });
 
 // http://backbonejs.org/#History

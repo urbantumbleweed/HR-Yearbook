@@ -4,15 +4,13 @@ var Students = Backbone.Collection.extend({
 
   url: 'https://hr-yearbook.herokuapp.com/api/',
 
-  initialize: function () {
+  initialize: function (params) {
     this.url = this.url + 'students';
-    this.on('highlight', this.handleHighlight, this);
-    this.getStudents();
+    // this.on('highlight', this.handleHighlight, this);
   },
-  getStudents: function() {
-    // debugger;
-    this.fetch()
-      .then(function(){
+  populate: function() {
+    return this.fetch()
+      .then(function(data){
         return new StudentsView({collection: this}).render();
       }.bind(this))
       .catch(function(err){
@@ -23,7 +21,6 @@ var Students = Backbone.Collection.extend({
   },
   handleHighlight: function(student){
     console.log('got the event in the collection');
-    this.trigger('ugabuga');
 
   }
 });
