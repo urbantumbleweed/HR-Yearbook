@@ -9,10 +9,15 @@ var Students = Backbone.Collection.extend({
     // this.on('highlight', this.handleHighlight, this);
   },
   populate: function() {
+    spinnerInit();
     return this.fetch()
       .then(function(data){
         return new StudentsView({collection: this}).render();
       }.bind(this))
+      .then(function(views){
+        spinnerRemove();
+        return views;
+      })
       .catch(function(err){
         console.err('Your shit is busted in the Students collection');
       });

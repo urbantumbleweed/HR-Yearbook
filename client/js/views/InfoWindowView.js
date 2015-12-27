@@ -14,7 +14,7 @@ var InfoWindowView = Backbone.View.extend({
     this.$el.html(this.template(this.model.attributes));
     setTimeout(function(){
       this.$el.html('');
-    }.bind(this), 2000);
+    }.bind(this), 1500);
   }
 
 });

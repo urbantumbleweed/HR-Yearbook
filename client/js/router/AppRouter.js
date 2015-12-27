@@ -4,7 +4,7 @@ var AppRouter = Backbone.Router.extend({
   routes: {
     '': 'landing',
     'students?id=:id': 'studentById',
-    'students?name=:nameString': 'studentByName',
+    'students?name=:name': 'studentByName',
     'students?image=:imageUrl': 'studentByImage',
     'students?cohort=:number': 'showCohort',
     'students/:id': 'studentById',
@@ -28,16 +28,15 @@ var AppRouter = Backbone.Router.extend({
     this.navigate('students/' + encodeURIComponent(id), this.triggerOption);
   },
 
-  studentByName: function(nameString){
-    this.navigate('students/name=' + encodeURIComponent(nameString), this.triggerOption);
+  studentByName: function(name){
+    this.navigate('students?name=' + encodeURIComponent(name), this.triggerOption);
   },
 
   studentByImage: function(imageUrl){
-    this.navigate('students/image=' + encodeURIComponent(imageUrl), this.triggerOption);
+    this.navigate('students?image=' + encodeURIComponent(imageUrl), this.triggerOption);
   },
 
   showCohort: function(params){
-    debugger;
     this.navigate('cohort/' + encodeURIComponent(params), this.triggerOption);
   }
 

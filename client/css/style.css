@@ -22,7 +22,7 @@ body {
   display: flex;
   position: relative;
   font-size: 20px;
-  height: 70px;
+  height: 8rem;
   margin: 20px 2rem 1rem 2rem;
   align-items: baseline;
 }
@@ -49,6 +49,7 @@ body {
   align-items: center;
   position: relative;
   border-radius: .75rem;
+  height: 30rem;
 }
 
 .student:hover {
@@ -108,6 +109,13 @@ body {
   font-weight: bold;
 }
 
+.find-student {
+  margin-right: 0.4rem;
+  height: 22px;
+  font-size: 0.7rem;
+  padding: 5px;
+}
+
 .hover {
   background-color: #afafaf;
 }
@@ -127,6 +135,7 @@ body {
   height: 8rem;
   position: relative;
   left: 0rem;
+  animation: 2s linear infinite spin;
 }
 
 .navbar ul {
@@ -211,3 +220,11 @@ body {
   clear: both;
 }
 
+ @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

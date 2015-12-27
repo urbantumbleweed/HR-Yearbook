@@ -1,15 +1,15 @@
 // The root model of the application
 var AppModel = Backbone.Model.extend({
 
+  url: 'https://hr-yearbook.herokuapp.com/api/',
+
+
   initialize: function(params){
     this.on('currentStudents:reset', this.handleReset, this);
     this.on('currentStudents:sync', this.handleSync, this);
-    // this.set('infoPane', new Student());
-    // this.set('students', new Students());
     this.get('currentStudents').fetch().then(function(){
       this.handleSync();
-      this.set('cohorts',_.uniq(this.get('currentStudents').pluck('cohort')));
-      this.trigger('cohortLinksCreated');
+      this.getCohorts();
     }.bind(this))
   },
 
@@ -22,18 +22,18 @@ var AppModel = Backbone.Model.extend({
   },
 
   changeUrl: function(url){
-    var baseUrl= 'https://hr-yearbook.herokuapp.com/api/';
     var students = this.get('currentStudents');
-    students.url = baseUrl + url;
+    students.url = this.url + url;
     students.reset();
     return students;
+  },
+
+  getCohorts: function(){
+    this.set('cohorts',_.uniq(this.get('currentStudents').pluck('cohort')));
+    this.trigger('cohortLinksCreated');
   },
 
   handleHighlight: function(student){
     this.set('highlightedStudent', student);
   }
-
-
-
-
 });
